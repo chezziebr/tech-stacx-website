@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Tech Stacx</title>
+  <meta name="description" content="Tell us what's not working. We'll tell you what's possible. Start a conversation with Tech Stacx.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="nav-logo">Tech <span>Stacx</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="min-height: auto; padding-top: 10rem; padding-bottom: 3rem;">
+    <div class="container">
+      <div class="hero-content">
+        <span class="label">Get in Touch</span>
+        <h1>Tell us what's not working.</h1>
+        <div class="hero-line"></div>
+        <p>No pitch. No pressure. Just a conversation about whether custom software makes sense for your business. If it doesn't, we'll tell you that too.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section style="padding-top: 2rem;">
+    <div class="container">
+      <div class="grid-2">
+        <div class="fade-in">
+          <form id="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Your business">
+            </div>
+            <div class="form-group">
+              <label for="size">Company Size</label>
+              <select id="size" name="size">
+                <option value="" disabled selected>Select team size</option>
+                <option value="1-10">1–10 employees</option>
+                <option value="11-50">11–50 employees</option>
+                <option value="51-200">51–200 employees</option>
+                <option value="201-500">201–500 employees</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="problem">What's not working?</label>
+              <textarea id="problem" name="problem" required placeholder="Tell us about the workflow, the software that doesn't fit, the workaround that's costing you time — whatever's on your mind."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="how">How did you hear about us?</label>
+              <input type="text" id="how" name="how" placeholder="Optional">
+            </div>
+            <button type="submit" class="btn btn-filled" style="width: 100%; text-align: center;">Send Inquiry</button>
+          </form>
+          <div id="form-success" style="display: none; margin-top: 2rem;">
+            <h3>Message sent.</h3>
+            <p style="margin-top: 0.5rem;">We'll get back to you within one business day. If it's urgent, reach out directly at the email below.</p>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div style="padding-left: 2rem;">
+            <span class="label">What to Expect</span>
+            <h3 style="margin-bottom: 1rem;">A real conversation, not a sales call.</h3>
+            <p style="margin-bottom: 2rem;">We'll review your inquiry, ask some follow-up questions if needed, and give you an honest assessment of whether custom software is the right move for your situation. Sometimes it's not, and we'll tell you that.</p>
+
+            <div class="divider-short"></div>
+
+            <span class="label" style="margin-top: 2rem;">Direct Contact</span>
+            <p style="margin-bottom: 0.5rem; color: var(--white);">chezziebr@gmail.com</p>
+
+            <div class="divider-short"></div>
+
+            <span class="label" style="margin-top: 2rem;">Good Fit Checklist</span>
+            <p style="margin-bottom: 0.75rem;">Before reaching out, consider whether:</p>
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You have a specific workflow that current software can't handle</p>
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You're spending money on tools that don't quite fit</p>
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;Your team has workarounds they shouldn't need</p>
+            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You want to own the solution, not rent it</p>
+
+            <div class="divider-short"></div>
+
+            <span class="label" style="margin-top: 2rem;">Response Time</span>
+            <p>We respond to every inquiry within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2026 Tech Stacx. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      // In production, this would POST to your backend or a service like Formspree/Netlify Forms
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
