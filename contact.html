@@ -38,74 +38,171 @@
     </div>
   </section>
 
-  <!-- Contact Form -->
+  <!-- Quick Quiz -->
   <section style="padding-top: 2rem;">
     <div class="container">
-      <div class="grid-2">
-        <div class="fade-in">
-          <form id="contact-form" onsubmit="handleSubmit(event)">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required placeholder="Full name">
+      <div style="max-width: 700px;">
+        <span class="label">Quick Quiz</span>
+        <p style="margin-bottom: 2.5rem;">Answer a few questions so we can understand your situation before we talk. Takes about 2 minutes.</p>
+
+        <!-- Quiz Container -->
+        <div id="quiz">
+          <!-- Step 1 -->
+          <div class="quiz-step active" data-step="1">
+            <div class="quiz-progress"><span id="progress-text">1 of 8</span></div>
+            <h3>What best describes your situation right now?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q1" value="We use off-the-shelf software and it doesn't fit"> We use off-the-shelf software (Salesforce, Monday, etc.) and it doesn't quite fit</label>
+              <label class="quiz-option"><input type="radio" name="q1" value="We use spreadsheets and manual processes"> We're running on spreadsheets, email, and manual processes</label>
+              <label class="quiz-option"><input type="radio" name="q1" value="We have custom software that needs replacing"> We have custom software but it's outdated or broken</label>
+              <label class="quiz-option"><input type="radio" name="q1" value="We need something that doesn't exist yet"> We need something that doesn't exist on the market</label>
             </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com">
+            <button class="btn" onclick="nextStep(1)" disabled id="next-1">Next</button>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="quiz-step" data-step="2">
+            <div class="quiz-progress"><span>2 of 8</span></div>
+            <h3>How would you describe the complexity of what you need?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q2" value="Simple - an existing app with a few tweaks"> Simple — an existing app with a few tweaks for our business</label>
+              <label class="quiz-option"><input type="radio" name="q2" value="Moderate - unique workflows but straightforward"> Moderate — we have unique workflows but they're straightforward</label>
+              <label class="quiz-option"><input type="radio" name="q2" value="Complex - highly specialized to our industry"> Complex — highly specialized to our industry or niche</label>
+              <label class="quiz-option"><input type="radio" name="q2" value="Not sure - I know the problem but not the solution"> Not sure — I know the problem but not what the solution looks like</label>
             </div>
-            <div class="form-group">
-              <label for="company">Company Name</label>
-              <input type="text" id="company" name="company" placeholder="Your business">
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(2)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(2)" disabled id="next-2">Next</button>
             </div>
-            <div class="form-group">
-              <label for="size">Company Size</label>
-              <select id="size" name="size">
-                <option value="" disabled selected>Select team size</option>
-                <option value="1-10">1–10 employees</option>
-                <option value="11-50">11–50 employees</option>
-                <option value="51-200">51–200 employees</option>
-                <option value="201-500">201–500 employees</option>
-                <option value="500+">500+</option>
-              </select>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="quiz-step" data-step="3">
+            <div class="quiz-progress"><span>3 of 8</span></div>
+            <h3>What's your budget situation?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q3" value="Ready to invest - have budget for a custom build"> Ready to invest — we have budget set aside for a custom build</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="Prefer monthly - pay as we go"> Prefer to pay monthly — we need the tool but can't front large dev costs right now</label>
+              <label class="quiz-option"><input type="radio" name="q3" value="Exploring - need to understand costs first"> Still exploring — I need to understand what this would cost first</label>
             </div>
-            <div class="form-group">
-              <label for="problem">What's not working?</label>
-              <textarea id="problem" name="problem" required placeholder="Tell us about the workflow, the software that doesn't fit, the workaround that's costing you time — whatever's on your mind."></textarea>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(3)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(3)" disabled id="next-3">Next</button>
             </div>
-            <div class="form-group">
-              <label for="how">How did you hear about us?</label>
-              <input type="text" id="how" name="how" placeholder="Optional">
+          </div>
+
+          <!-- Step 4 -->
+          <div class="quiz-step" data-step="4">
+            <div class="quiz-progress"><span>4 of 8</span></div>
+            <h3>How tech-savvy is your team?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q4" value="Very comfortable - we use multiple software tools daily"> Very comfortable — we use multiple software tools daily and adapt quickly</label>
+              <label class="quiz-option"><input type="radio" name="q4" value="Average - we manage but new tools take adjustment"> Average — we get by, but new tools take some adjustment time</label>
+              <label class="quiz-option"><input type="radio" name="q4" value="Low - we need things to be really simple"> Low — whatever we use needs to be really simple and intuitive</label>
             </div>
-            <button type="submit" class="btn btn-filled" style="width: 100%; text-align: center;">Send Inquiry</button>
-          </form>
-          <div id="form-success" style="display: none; margin-top: 2rem;">
-            <h3>Message sent.</h3>
-            <p style="margin-top: 0.5rem;">We'll get back to you within one business day. If it's urgent, reach out directly at the email below.</p>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(4)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(4)" disabled id="next-4">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="quiz-step" data-step="5">
+            <div class="quiz-progress"><span>5 of 8</span></div>
+            <h3>How many people would use this software day-to-day?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q5" value="Just me or 1-2 people"> Just me or 1–2 people</label>
+              <label class="quiz-option"><input type="radio" name="q5" value="A small team (3-10)"> A small team (3–10 people)</label>
+              <label class="quiz-option"><input type="radio" name="q5" value="Multiple teams or departments (10-50)"> Multiple teams or departments (10–50)</label>
+              <label class="quiz-option"><input type="radio" name="q5" value="Whole company or external users too (50+)"> Whole company or external users too (50+)</label>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(5)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(5)" disabled id="next-5">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="quiz-step" data-step="6">
+            <div class="quiz-progress"><span>6 of 8</span></div>
+            <h3>Have you tried to build or solve this yourself?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option"><input type="radio" name="q6" value="Yes - tried vibe coding or no-code tools"> Yes — I've tried vibe coding tools, no-code platforms, or AI builders</label>
+              <label class="quiz-option"><input type="radio" name="q6" value="Yes - hired a developer but it didn't work out"> Yes — I hired a developer or agency but it didn't work out</label>
+              <label class="quiz-option"><input type="radio" name="q6" value="No - haven't tried yet"> No — haven't tried yet, just know we need something</label>
+              <label class="quiz-option"><input type="radio" name="q6" value="No - didn't know this was possible"> No — didn't realize custom software was an option at our size</label>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(6)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(6)" disabled id="next-6">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="quiz-step" data-step="7">
+            <div class="quiz-progress"><span>7 of 8</span></div>
+            <h3>Is there an app or website you love the look and feel of?</h3>
+            <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem;">Doesn't have to be in your industry. Could be a carpet company's site or a fizzy soda brand's app — whatever feels right to you.</p>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <textarea id="q7" name="q7" placeholder="Paste a link or describe what you like about it. If nothing comes to mind, just type 'skip'." style="min-height: 100px;"></textarea>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn" onclick="prevStep(7)" style="border-color: var(--mid);">Back</button>
+              <button class="btn" onclick="nextStep(7)" id="next-7">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 8: Contact Info -->
+          <div class="quiz-step" data-step="8">
+            <div class="quiz-progress"><span>8 of 8</span></div>
+            <h3>Last step — tell us how to reach you.</h3>
+            <form id="contact-form" onsubmit="handleSubmit(event)">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="you@company.com">
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" placeholder="Your business">
+              </div>
+              <div class="form-group">
+                <label for="problem">Anything else we should know?</label>
+                <textarea id="problem" name="problem" placeholder="The more context, the better our first conversation will be."></textarea>
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <button type="button" class="btn" onclick="prevStep(8)" style="border-color: var(--mid);">Back</button>
+                <button type="submit" class="btn btn-filled" style="flex: 1; text-align: center;">Send &amp; Start the Conversation</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Success -->
+          <div id="form-success" style="display: none;">
+            <h3>We've got everything we need.</h3>
+            <div class="divider-short"></div>
+            <p style="margin-top: 1rem;">We'll review your answers and get back to you within one business day with an honest take on whether custom software makes sense for your situation.</p>
+            <p style="margin-top: 1rem;">If it's urgent, reach out directly: <span style="color: var(--white);">chezziebr@gmail.com</span></p>
           </div>
         </div>
-        <div class="fade-in">
-          <div style="padding-left: 2rem;">
+      </div>
+
+      <!-- Sidebar -->
+      <div class="fade-in" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.06);">
+        <div class="grid-2">
+          <div>
             <span class="label">What to Expect</span>
             <h3 style="margin-bottom: 1rem;">A real conversation, not a sales call.</h3>
-            <p style="margin-bottom: 2rem;">We'll review your inquiry, ask some follow-up questions if needed, and give you an honest assessment of whether custom software is the right move for your situation. Sometimes it's not, and we'll tell you that.</p>
-
-            <div class="divider-short"></div>
-
-            <span class="label" style="margin-top: 2rem;">Direct Contact</span>
-            <p style="margin-bottom: 0.5rem; color: var(--white);">chezziebr@gmail.com</p>
-
-            <div class="divider-short"></div>
-
-            <span class="label" style="margin-top: 2rem;">Good Fit Checklist</span>
-            <p style="margin-bottom: 0.75rem;">Before reaching out, consider whether:</p>
-            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You have a specific workflow that current software can't handle</p>
-            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You're spending money on tools that don't quite fit</p>
-            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;Your team has workarounds they shouldn't need</p>
-            <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">&#10003; &nbsp;You want to own the solution, not rent it</p>
-
-            <div class="divider-short"></div>
-
-            <span class="label" style="margin-top: 2rem;">Response Time</span>
-            <p>We respond to every inquiry within one business day.</p>
+            <p>We'll review your quiz answers, ask follow-up questions if needed, and give you an honest assessment. Sometimes the answer is "you don't need us" — and we'll tell you that.</p>
+          </div>
+          <div>
+            <span class="label">Direct Contact</span>
+            <p style="color: var(--white); margin-bottom: 1.5rem;">chezziebr@gmail.com</p>
+            <span class="label">Response Time</span>
+            <p>Every inquiry gets a response within one business day.</p>
           </div>
         </div>
       </div>
@@ -134,11 +231,51 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Quiz navigation
+    function nextStep(current) {
+      document.querySelector(`.quiz-step[data-step="${current}"]`).classList.remove('active');
+      document.querySelector(`.quiz-step[data-step="${current + 1}"]`).classList.add('active');
+      window.scrollTo({ top: document.getElementById('quiz').offsetTop - 120, behavior: 'smooth' });
+    }
+
+    function prevStep(current) {
+      document.querySelector(`.quiz-step[data-step="${current}"]`).classList.remove('active');
+      document.querySelector(`.quiz-step[data-step="${current - 1}"]`).classList.add('active');
+      window.scrollTo({ top: document.getElementById('quiz').offsetTop - 120, behavior: 'smooth' });
+    }
+
+    // Enable Next button when option selected
+    document.querySelectorAll('.quiz-options input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const step = this.closest('.quiz-step').dataset.step;
+        const nextBtn = document.getElementById('next-' + step);
+        if (nextBtn) nextBtn.disabled = false;
+      });
+    });
+
     function handleSubmit(e) {
       e.preventDefault();
-      // In production, this would POST to your backend or a service like Formspree/Netlify Forms
-      document.getElementById('contact-form').style.display = 'none';
+      // Collect all quiz answers
+      const answers = {};
+      for (let i = 1; i <= 6; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) answers['q' + i] = selected.value;
+      }
+      const q7 = document.getElementById('q7');
+      if (q7) answers.q7 = q7.value;
+
+      const form = document.getElementById('contact-form');
+      answers.name = form.querySelector('#name').value;
+      answers.email = form.querySelector('#email').value;
+      answers.company = form.querySelector('#company').value;
+      answers.notes = form.querySelector('#problem').value;
+
+      // In production, POST answers to your backend or Formspree
+      console.log('Quiz submission:', answers);
+
+      document.querySelector('.quiz-step.active').classList.remove('active');
       document.getElementById('form-success').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('quiz').offsetTop - 120, behavior: 'smooth' });
     }
   </script>
 
